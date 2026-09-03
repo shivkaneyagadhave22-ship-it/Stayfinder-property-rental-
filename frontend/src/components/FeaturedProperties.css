@@ -1,0 +1,543 @@
+/* ========================================
+   FEATURED PROPERTIES
+======================================== */
+
+.featured-properties {
+  width: 90%;
+  max-width: 1200px;
+
+  margin: 70px auto 60px;
+
+  box-sizing: border-box;
+}
+
+
+/* ========================================
+   HEADER
+======================================== */
+
+.featured-header {
+  width: 100%;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: flex-end;
+
+  gap: 20px;
+
+  margin-bottom: 28px;
+}
+
+
+/* Small Label */
+
+.section-tag {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #ff4d6d;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.8px;
+}
+
+
+/* Heading */
+
+.featured-header h2 {
+  margin: 0;
+
+  color: #1f2937;
+
+  font-size: 30px;
+
+  font-weight: 800;
+
+  line-height: 1.3;
+}
+
+
+/* Description */
+
+.featured-header p {
+  margin: 7px 0 0;
+
+  color: #6b7280;
+
+  font-size: 14px;
+}
+
+
+/* ========================================
+   VIEW ALL BUTTON
+======================================== */
+
+.view-all-btn {
+  padding: 11px 18px;
+
+  background: #ffffff;
+
+  color: #ff4d6d;
+
+  border: 1px solid #ff4d6d;
+
+  border-radius: 7px;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  white-space: nowrap;
+
+  transition: 0.3s ease;
+}
+
+
+.view-all-btn:hover {
+  background: #ff4d6d;
+
+  color: white;
+}
+
+
+/* ========================================
+   PROPERTY GRID
+======================================== */
+
+.featured-property-grid {
+
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 24px;
+}
+
+
+/* ========================================
+   PROPERTY CARD
+======================================== */
+
+.featured-property-card {
+
+  width: 100%;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 12px;
+
+  overflow: hidden;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+
+  transition: 0.3s ease;
+}
+
+
+.featured-property-card:hover {
+
+  transform: translateY(-5px);
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+
+/* ========================================
+   IMAGE
+======================================== */
+
+.featured-property-image {
+
+  position: relative;
+
+  width: 100%;
+
+  height: 220px;
+
+  overflow: hidden;
+
+  background: #f3f4f6;
+}
+
+
+.featured-property-image img {
+
+  width: 100%;
+
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  object-position: center;
+
+  transition: transform 0.4s ease;
+}
+
+
+.featured-property-card:hover
+.featured-property-image img {
+
+  transform: scale(1.04);
+}
+
+
+/* ========================================
+   FOR RENT BADGE
+======================================== */
+
+.featured-property-badge {
+
+  position: absolute;
+
+  top: 12px;
+
+  left: 12px;
+
+  padding: 5px 9px;
+
+  background: #ff4d6d;
+
+  color: #ffffff;
+
+  border-radius: 5px;
+
+  font-size: 10px;
+
+  font-weight: 600;
+}
+
+
+/* ========================================
+   WISHLIST
+======================================== */
+
+.featured-wishlist-btn {
+
+  position: absolute;
+
+  top: 10px;
+
+  right: 10px;
+
+  width: 34px;
+
+  height: 34px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  color: #555555;
+
+  font-size: 21px;
+
+  cursor: pointer;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+  transition: 0.3s ease;
+}
+
+
+.featured-wishlist-btn:hover {
+
+  color: #ff4d6d;
+
+  transform: scale(1.08);
+}
+
+
+/* ========================================
+   CONTENT
+======================================== */
+
+.featured-property-content {
+
+  padding: 16px;
+}
+
+
+/* ========================================
+   TITLE
+======================================== */
+
+.featured-property-content h3 {
+
+  margin: 0 0 7px;
+
+  color: #1f2937;
+
+  font-size: 16px;
+
+  font-weight: 700;
+
+  line-height: 1.4;
+}
+
+
+/* ========================================
+   LOCATION
+======================================== */
+
+.featured-property-location {
+
+  margin: 0 0 10px;
+
+  color: #6b7280;
+
+  font-size: 12px;
+}
+
+
+/* ========================================
+   PRICE
+======================================== */
+
+.featured-property-price {
+
+  margin-bottom: 12px;
+
+  color: #ff4d6d;
+
+  font-size: 15px;
+
+  font-weight: 800;
+}
+
+
+/* ========================================
+   DETAILS
+======================================== */
+
+.featured-property-details {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  padding-bottom: 13px;
+
+  border-bottom: 1px solid #eeeeee;
+
+  color: #6b7280;
+
+  font-size: 11px;
+}
+
+
+.featured-property-details span {
+
+  white-space: nowrap;
+}
+
+
+/* ========================================
+   VIEW DETAILS
+======================================== */
+
+.featured-details-btn {
+
+  margin-top: 13px;
+
+  padding: 8px 14px;
+
+  background: #ffffff;
+
+  color: #ff4d6d;
+
+  border: 1px solid #ff4d6d;
+
+  border-radius: 6px;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.3s ease;
+}
+
+
+.featured-details-btn:hover {
+
+  background: #ff4d6d;
+
+  color: #ffffff;
+}
+
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 1024px) {
+
+  .featured-properties {
+
+    width: 90%;
+
+    margin: 60px auto 50px;
+  }
+
+
+  .featured-property-grid {
+
+    gap: 18px;
+  }
+
+
+  .featured-property-image {
+
+    height: 200px;
+  }
+
+
+  .featured-property-content {
+
+    padding: 14px;
+  }
+
+}
+
+
+/* ========================================
+   SMALL TABLET
+======================================== */
+
+@media (max-width: 768px) {
+
+  .featured-properties {
+
+    width: 92%;
+  }
+
+
+  .featured-header {
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 15px;
+  }
+
+
+  .featured-header h2 {
+
+    font-size: 26px;
+  }
+
+
+  .featured-property-grid {
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 18px;
+  }
+
+
+  .featured-property-image {
+
+    height: 210px;
+  }
+
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 468px) {
+
+  .featured-properties {
+
+    width: 92%;
+
+    margin: 45px auto;
+  }
+
+
+  .featured-header h2 {
+
+    font-size: 22px;
+  }
+
+
+  .featured-header p {
+
+    font-size: 12px;
+  }
+
+
+  .featured-property-grid {
+
+    grid-template-columns: 1fr;
+
+    gap: 20px;
+  }
+
+
+  .featured-property-image {
+
+    height: 220px;
+  }
+
+
+  .featured-property-content {
+
+    padding: 15px;
+  }
+
+
+  .featured-property-content h3 {
+
+    font-size: 16px;
+  }
+
+
+  .featured-property-location {
+
+    font-size: 12px;
+  }
+
+
+  .featured-property-price {
+
+    font-size: 16px;
+  }
+
+
+  .featured-property-details {
+
+    font-size: 11px;
+
+    gap: 10px;
+  }
+
+}

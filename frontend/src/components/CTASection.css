@@ -1,0 +1,176 @@
+/* ========================================
+   CTA SECTION
+======================================== */
+
+.cta-section {
+  width: 90%;
+  max-width: 1200px;
+
+  margin: 60px auto 0;
+
+  padding: 35px 45px;
+
+  background: linear-gradient(
+    135deg,
+    #ff4d6d,
+    #ff416c
+  );
+
+  border-radius: 12px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 30px;
+
+  box-sizing: border-box;
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+/* ========================================
+   CTA CONTENT
+======================================== */
+
+.cta-content {
+  max-width: 600px;
+}
+
+.cta-content h2 {
+  margin: 0 0 10px;
+
+  color: white;
+
+  font-size: 26px;
+  font-weight: 800;
+}
+
+.cta-content p {
+  margin: 0;
+
+  color: white;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+}
+
+/* ========================================
+   CTA BUTTON
+======================================== */
+
+.cta-btn {
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  padding: 12px 22px;
+
+  background: white;
+
+  color: #374151;
+
+  border: none;
+
+  border-radius: 7px;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.cta-btn span {
+  color: #ff4d6d;
+
+  font-size: 20px;
+
+  line-height: 1;
+}
+
+.cta-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 1024px) {
+
+  .cta-section {
+    width: 92%;
+
+    padding: 30px 35px;
+  }
+
+  .cta-content h2 {
+    font-size: 24px;
+  }
+
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 768px) {
+
+  .cta-section {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    padding: 30px 25px;
+
+    gap: 20px;
+  }
+
+  .cta-content h2 {
+    font-size: 22px;
+  }
+
+  .cta-btn {
+    width: auto;
+  }
+
+}
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 468px) {
+
+  .cta-section {
+    width: 92%;
+
+    padding: 25px 20px;
+  }
+
+  .cta-content h2 {
+    font-size: 20px;
+  }
+
+  .cta-content p {
+    font-size: 13px;
+  }
+
+  .cta-btn {
+    width: 100%;
+  }
+
+}

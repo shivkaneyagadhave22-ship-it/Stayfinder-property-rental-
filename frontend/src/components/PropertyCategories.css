@@ -1,0 +1,235 @@
+/* =====================================
+   PROPERTY CATEGORIES SECTION
+===================================== */
+
+.property-categories {
+  width: 90%;
+  max-width: 1200px;
+  margin: 70px auto;
+  text-align: center;
+}
+
+
+/* =====================================
+   HEADING
+===================================== */
+
+.category-heading {
+  margin-bottom: 35px;
+}
+
+.category-label {
+  display: block;
+  color: #ff4d6d;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.category-heading h2 {
+  margin: 0;
+  font-size: 34px;
+  font-weight: 800;
+  color: #1f2937;
+}
+
+.category-heading p {
+  margin-top: 10px;
+  color: #6b7280;
+  font-size: 15px;
+}
+
+
+/* =====================================
+   CARDS CONTAINER
+===================================== */
+
+.category-cards {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 20px;
+
+  align-items: stretch;
+}
+
+
+/* =====================================
+   SINGLE CARD
+===================================== */
+
+.category-card {
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 14px;
+
+  overflow: hidden;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+
+  text-align: left;
+
+  transition: 0.3s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =====================================
+   CARD IMAGE
+===================================== */
+
+.category-image {
+  width: 100%;
+  height: 160px;
+
+  overflow: hidden;
+}
+
+.category-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+
+  transition: 0.4s ease;
+}
+
+.category-card:hover .category-image img {
+  transform: scale(1.05);
+}
+
+
+/* =====================================
+   CARD CONTENT
+===================================== */
+
+.category-content {
+  position: relative;
+
+  padding: 18px;
+
+  padding-top: 25px;
+}
+
+
+/* =====================================
+   ICON
+===================================== */
+
+.category-icon {
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+
+  background: #ff4d6d;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 19px;
+
+  position: absolute;
+
+  top: -22px;
+  left: 18px;
+
+  border: 4px solid white;
+}
+
+
+/* =====================================
+   CARD TITLE
+===================================== */
+
+.category-content h3 {
+  margin: 0 0 6px;
+
+  font-size: 18px;
+
+  font-weight: 700;
+
+  color: #1f2937;
+}
+
+
+/* =====================================
+   CARD DESCRIPTION
+===================================== */
+
+.category-content p {
+  margin: 0 0 9px;
+
+  font-size: 13px;
+
+  color: #6b7280;
+}
+
+
+/* =====================================
+   PROPERTY COUNT
+===================================== */
+
+.category-content span {
+  font-size: 13px;
+
+  font-weight: 700;
+
+  color: #ff4d6d;
+}
+
+
+/* =====================================
+   TABLET
+===================================== */
+
+@media (max-width: 992px) {
+
+  .category-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media (max-width: 576px) {
+
+  .property-categories {
+    width: 92%;
+  }
+
+  .category-heading h2 {
+    font-size: 28px;
+  }
+
+  .category-heading p {
+    font-size: 14px;
+  }
+
+  .category-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .category-image {
+    height: 190px;
+  }
+
+}

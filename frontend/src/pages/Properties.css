@@ -1,0 +1,603 @@
+/* =========================================
+   PROPERTIES PAGE
+========================================= */
+
+.properties-page {
+  min-height: 100vh;
+  background: #f8f9fd;
+  padding: 55px 6%;
+  color: #17233c;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.properties-header {
+  max-width: 1300px;
+  margin: 0 auto 35px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.properties-header h1 {
+  margin: 0;
+  font-size: 42px;
+  font-weight: 750;
+  color: #17233c;
+}
+
+.properties-header p {
+  margin-top: 10px;
+  font-size: 20px;
+  color: #718096;
+}
+
+
+/* AVAILABLE BADGE */
+
+.available-badge {
+  background: #e9f9f0;
+  color: #239b5b;
+
+  padding: 14px 22px;
+
+  border-radius: 10px;
+
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.available-badge span {
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+
+/* =========================================
+   SEARCH BOX
+========================================= */
+
+.property-search {
+  max-width: 1300px;
+  margin: 0 auto 45px;
+
+  background: white;
+
+  padding: 28px;
+
+  border-radius: 18px;
+
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+
+  display: grid;
+
+  grid-template-columns: 1.4fr 1fr 0.75fr;
+
+  gap: 25px;
+}
+
+
+/* Location */
+
+.search-location {
+  height: 62px;
+
+  border: 1px solid #dce1e8;
+
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 18px;
+}
+
+.search-icon {
+  font-size: 28px;
+  color: #7b8799;
+  margin-right: 12px;
+}
+
+.search-location input {
+  width: 100%;
+
+  border: none;
+  outline: none;
+
+  font-size: 18px;
+
+  color: #273449;
+}
+
+.search-location input::placeholder {
+  color: #8b97a8;
+}
+
+
+/* Property Type */
+
+.search-type select {
+  width: 100%;
+  height: 62px;
+
+  border: 1px solid #dce1e8;
+
+  border-radius: 12px;
+
+  padding: 0 20px;
+
+  font-size: 18px;
+
+  color: #273449;
+
+  background: white;
+
+  outline: none;
+
+  cursor: pointer;
+}
+
+
+/* Search Button */
+
+.search-property-btn {
+  height: 62px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background: #ff4d6d;
+
+  color: white;
+
+  font-size: 19px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.search-property-btn:hover {
+  background: #e6395f;
+  transform: translateY(-2px);
+}
+
+
+/* =========================================
+   PROPERTY GRID
+========================================= */
+
+.properties-grid {
+  max-width: 1300px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 30px;
+}
+
+
+/* =========================================
+   PROPERTY CARD
+========================================= */
+
+.property-card {
+  background: white;
+
+  border-radius: 18px;
+
+  overflow: hidden;
+
+  border: 1px solid #e6e9ef;
+
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+
+  transition: 0.3s;
+}
+
+.property-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================================
+   PROPERTY IMAGE
+========================================= */
+
+.property-image-wrapper {
+  position: relative;
+
+  height: 270px;
+
+  overflow: hidden;
+}
+
+.property-image {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+
+  transition: 0.4s;
+}
+
+.property-card:hover .property-image {
+  transform: scale(1.04);
+}
+
+
+/* Available Badge */
+
+.property-available {
+  position: absolute;
+
+  top: 18px;
+  left: 18px;
+
+  background: #20a464;
+
+  color: white;
+
+  padding: 9px 15px;
+
+  border-radius: 8px;
+
+  font-size: 15px;
+
+  font-weight: 700;
+}
+
+
+/* Heart */
+
+.property-heart {
+  position: absolute;
+
+  top: 15px;
+  right: 15px;
+
+  width: 54px;
+  height: 54px;
+
+  border-radius: 50%;
+
+  border: none;
+
+  background: white;
+
+  color: #ff4d6d;
+
+  font-size: 31px;
+
+  cursor: pointer;
+
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+
+  transition: 0.3s;
+}
+
+.property-heart:hover {
+  background: #ff4d6d;
+  color: white;
+}
+
+
+/* =========================================
+   CARD CONTENT
+========================================= */
+
+.property-content {
+  padding: 25px;
+}
+
+
+/* Property Type */
+
+.property-type {
+  display: inline-block;
+
+  background: #ffe9ee;
+
+  color: #ff4d6d;
+
+  padding: 8px 13px;
+
+  border-radius: 7px;
+
+  font-size: 15px;
+
+  font-weight: 700;
+
+  margin-bottom: 15px;
+}
+
+
+/* Title */
+
+.property-content h2 {
+  margin: 0 0 12px;
+
+  font-size: 24px;
+
+  color: #18243a;
+
+  font-weight: 700;
+}
+
+
+/* Location */
+
+.property-location {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  color: #718096;
+
+  font-size: 16px;
+
+  margin-bottom: 22px;
+}
+
+.property-location span:first-child {
+  font-size: 17px;
+}
+
+
+/* =========================================
+   AMENITIES
+========================================= */
+
+.property-amenities {
+  display: flex;
+
+  align-items: center;
+
+  gap: 22px;
+
+  color: #657185;
+
+  font-size: 15px;
+}
+
+.property-amenities span {
+  white-space: nowrap;
+}
+
+
+/* Divider */
+
+.property-divider {
+  height: 1px;
+
+  background: #e7e9ee;
+
+  margin: 22px 0;
+}
+
+
+/* =========================================
+   PRICE + BUTTON
+========================================= */
+
+.property-bottom {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 15px;
+}
+
+.property-price {
+  display: flex;
+
+  flex-direction: column;
+}
+
+.property-price strong {
+  color: #ff4265;
+
+  font-size: 27px;
+
+  font-weight: 750;
+}
+
+.property-price span {
+  color: #718096;
+
+  font-size: 16px;
+
+  margin-top: 4px;
+}
+
+
+/* View Details */
+
+.view-details-btn {
+  background: white;
+
+  border: 2px solid #ff9aae;
+
+  color: #ff4265;
+
+  padding: 13px 19px;
+
+  border-radius: 10px;
+
+  font-size: 16px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  white-space: nowrap;
+
+  transition: 0.3s;
+}
+
+.view-details-btn span {
+  margin-left: 8px;
+
+  font-size: 20px;
+}
+
+.view-details-btn:hover {
+  background: #ff4d6d;
+
+  border-color: #ff4d6d;
+
+  color: white;
+}
+
+
+/* =========================================
+   NO PROPERTY
+========================================= */
+
+.no-properties {
+  grid-column: 1 / -1;
+
+  background: white;
+
+  border-radius: 18px;
+
+  padding: 80px 20px;
+
+  text-align: center;
+
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+}
+
+.no-property-icon {
+  font-size: 55px;
+}
+
+.no-properties h2 {
+  margin-top: 15px;
+
+  color: #18243a;
+}
+
+.no-properties p {
+  color: #718096;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1100px) {
+
+  .properties-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .property-search {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .search-property-btn {
+    grid-column: 1 / -1;
+  }
+
+}
+
+
+@media (max-width: 768px) {
+
+  .properties-page {
+    padding: 35px 20px;
+  }
+
+  .properties-header {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 20px;
+  }
+
+  .properties-header h1 {
+    font-size: 32px;
+  }
+
+  .properties-header p {
+    font-size: 17px;
+  }
+
+  .property-search {
+    grid-template-columns: 1fr;
+
+    padding: 20px;
+  }
+
+  .search-property-btn {
+    grid-column: auto;
+  }
+
+  .properties-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+@media (max-width: 480px) {
+
+  .properties-header h1 {
+    font-size: 28px;
+  }
+
+  .available-badge {
+    font-size: 14px;
+
+    padding: 11px 15px;
+  }
+
+  .property-image-wrapper {
+    height: 230px;
+  }
+
+  .property-content {
+    padding: 20px;
+  }
+
+  .property-content h2 {
+    font-size: 21px;
+  }
+
+  .property-amenities {
+    gap: 12px;
+
+    flex-wrap: wrap;
+  }
+
+  .property-bottom {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .view-details-btn {
+    width: 100%;
+  }
+
+}

@@ -1,0 +1,241 @@
+/* ========================================
+   HOW IT WORKS
+======================================== */
+
+.how-it-works {
+  width: 90%;
+  max-width: 1200px;
+
+  margin: 60px auto;
+  padding: 35px 40px;
+
+  background: #f8fbff;
+
+  border-radius: 12px;
+
+  box-sizing: border-box;
+}
+
+/* ========================================
+   HEADER
+======================================== */
+
+.how-header {
+  text-align: center;
+
+  margin-bottom: 35px;
+}
+
+.how-tag {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #ff4d6d;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+}
+
+.how-header h2 {
+  margin: 0;
+
+  color: #1f2937;
+
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.how-header p {
+  margin: 8px 0 0;
+
+  color: #6b7280;
+
+  font-size: 14px;
+}
+
+/* ========================================
+   STEPS CONTAINER
+======================================== */
+
+.steps-container {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+
+  box-sizing: border-box;
+}
+
+/* ========================================
+   STEP ITEM
+======================================== */
+
+.step-item {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  flex: 1;
+
+  min-width: 0;
+}
+
+/* ========================================
+   STEP NUMBER
+======================================== */
+
+.step-number {
+  flex-shrink: 0;
+
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #ff4d6d;
+
+  color: white;
+
+  border-radius: 50%;
+
+  font-size: 15px;
+  font-weight: 700;
+}
+
+/* ========================================
+   STEP CONTENT
+======================================== */
+
+.step-content {
+  min-width: 0;
+}
+
+.step-content h3 {
+  margin: 0 0 6px;
+
+  color: #1f2937;
+
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.step-content p {
+  margin: 0;
+
+  color: #6b7280;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+/* ========================================
+   ARROW
+======================================== */
+
+.step-arrow {
+  flex-shrink: 0;
+
+  margin: 0 20px;
+
+  color: #ff9bad;
+
+  font-size: 24px;
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 1024px) {
+
+  .how-it-works {
+    width: 92%;
+
+    padding: 30px;
+  }
+
+  .step-arrow {
+    margin: 0 10px;
+  }
+
+  .step-item {
+    gap: 10px;
+  }
+
+  .step-number {
+    width: 48px;
+    height: 48px;
+  }
+
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 768px) {
+
+  .how-it-works {
+    width: 92%;
+
+    margin: 50px auto;
+
+    padding: 30px 20px;
+  }
+
+  .steps-container {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 25px;
+  }
+
+  .step-item {
+    width: 100%;
+  }
+
+  .step-arrow {
+    display: none;
+  }
+
+}
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 468px) {
+
+  .how-it-works {
+    width: 92%;
+
+    padding: 25px 18px;
+  }
+
+  .how-header h2 {
+    font-size: 22px;
+  }
+
+  .how-header p {
+    font-size: 13px;
+  }
+
+  .step-number {
+    width: 45px;
+    height: 45px;
+
+    font-size: 13px;
+  }
+
+}
