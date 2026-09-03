@@ -7,7 +7,7 @@ import {
   FiUser,
 } from "react-icons/fi";
 
-const API_URL = " https://stayfinder-property-rental.onrender.com";
+const API_URL = "https://stayfinder-property-rental.onrender.com";
 
 function Chat({ onClose }) {
   const [currentUser, setCurrentUser] = useState(null);
