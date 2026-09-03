@@ -9,7 +9,7 @@ import {
 } from "react-icons/fi";
 import "./Chat.css";
 
-const API_URL = "http://localhost:5000";
+const API_URL = "https://stayfinder-property-rental.onrender.com";
 
 const getUserId = (user) => {
   if (!user) return null;
