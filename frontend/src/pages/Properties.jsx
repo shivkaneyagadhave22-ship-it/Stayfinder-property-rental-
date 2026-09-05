@@ -1,50 +1,73 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Properties.css";
 
 function Properties() {
   const [location, setLocation] = useState("");
   const [propertyType, setPropertyType] = useState("All Property Types");
 
-  const properties = [
-    {
-      id: 1,
-      title: "Modern 2 BHK Apartment",
-      type: "Apartment",
-      location: "Baner, Pune, Maharashtra",
-      beds: 2,
-      baths: 2,
-      area: 950,
-      rent: 25000,
-      image:
-        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80",
-    },
+  // const properties = [
+  //   {
+  //     id: 1,
+  //     title: "Modern 2 BHK Apartment",
+  //     type: "Apartment",
+  //     location: "Baner, Pune, Maharashtra",
+  //     beds: 2,
+  //     baths: 2,
+  //     area: 950,
+  //     rent: 25000,
+  //     image:
+  //       "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80",
+  //   },
 
-    {
-      id: 2,
-      title: "Luxury 3 BHK Apartment",
-      type: "Apartment",
-      location: "Wakad, Pune, Maharashtra",
-      beds: 3,
-      baths: 2,
-      area: 1200,
-      rent: 32000,
-      image:
-        "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=80",
-    },
+  //   {
+  //     id: 2,
+  //     title: "Luxury 3 BHK Apartment",
+  //     type: "Apartment",
+  //     location: "Wakad, Pune, Maharashtra",
+  //     beds: 3,
+  //     baths: 2,
+  //     area: 1200,
+  //     rent: 32000,
+  //     image:
+  //       "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=80",
+  //   },
 
-    {
-      id: 3,
-      title: "Beautiful Family House",
-      type: "House",
-      location: "Kothrud, Pune, Maharashtra",
-      beds: 3,
-      baths: 3,
-      area: 1500,
-      rent: 40000,
-      image:
-        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80",
-    },
-  ];
+  //   {
+  //     id: 3,
+  //     title: "Beautiful Family House",
+  //     type: "House",
+  //     location: "Kothrud, Pune, Maharashtra",
+  //     beds: 3,
+  //     baths: 3,
+  //     area: 1500,
+  //     rent: 40000,
+  //     image:
+  //       "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80",
+  //   },
+  // ];
+  const [properties, setProperties] = useState([]);
+const [loading, setLoading] = useState(true);
+
+useEffect(() => {
+  const fetchProperties = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/api/properties");
+      const result = await response.json();
+
+      if (result.success) {
+        setProperties(result.data);
+      } else {
+        console.error("Failed to fetch properties");
+      }
+    } catch (error) {
+      console.error("Error fetching properties:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchProperties();
+}, []);
 
   const filteredProperties = properties.filter((property) => {
     const locationMatch = property.location
@@ -53,7 +76,7 @@ function Properties() {
 
     const typeMatch =
       propertyType === "All Property Types" ||
-      property.type === propertyType;
+      property.propertyType === propertyType;
 
     return locationMatch && typeMatch;
   });
@@ -139,7 +162,7 @@ function Properties() {
 
             <div
               className="property-card"
-              key={property.id}
+              key={property._id}
             >
 
               {/* IMAGE */}
@@ -170,7 +193,7 @@ function Properties() {
 
                 {/* Property Type */}
                 <span className="property-type">
-                  {property.type}
+                  {property.propertyType}
                 </span>
 
 
@@ -191,11 +214,11 @@ function Properties() {
                 <div className="property-amenities">
 
                   <span>
-                    🛏️ {property.beds} Beds
+                    🛏️ {property.bedrooms} Beds
                   </span>
 
                   <span>
-                    🛁 {property.baths} Baths
+                    🛁 {property.bathrooms} Baths
                   </span>
 
                   <span>

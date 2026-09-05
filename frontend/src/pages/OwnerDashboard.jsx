@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
 import "./OwnerDashboard.css";
 
@@ -19,82 +20,48 @@ import {
   FiTrash2,
 } from "react-icons/fi";
 
-const API_URL = "https://stayfinder-property-rental.onrender.com";
+ const API_URL = "https://stayfinder-property-rental.onrender.com";
+// "http://localhost:5000";
 
 function OwnerDashboard() {
+  const navigate = useNavigate();
+
   // ========================================
   // USER
   // ========================================
 
-  const [currentUser, setCurrentUser] = useState(() => {
-    try {
-      const storedUser = localStorage.getItem("user");
+ const [currentUser, setCurrentUser] = useState(() => {
+  try {
+    const storedUser = localStorage.getItem("user");
 
-      if (storedUser) {
-        return JSON.parse(storedUser);
-      }
+    if (storedUser) {
+      const user = JSON.parse(storedUser);
 
-      return null;
-    } catch (error) {
-      console.error("User Session Error:", error);
-      return null;
+      return {
+        ...user,
+        _id: user._id || user.id,
+      };
     }
-  });
+
+    return null;
+  } catch (error) {
+    console.error("User Session Error:", error);
+    return null;
+  }
+});
 
   // ========================================
   // LOAD OWNER SESSION
   // ========================================
 
-  useEffect(() => {
-    const loadOwnerSession = async () => {
-      if (currentUser?._id) {
-        console.log("Current Owner:", currentUser);
-        return;
-      }
-
-      try {
-        console.log("No local session. Finding registered owner...");
-
-        const response = await fetch(
-          `${API_URL}/api/messages/owners`
-        );
-
-        const data = await response.json();
-
-        if (
-          data.success &&
-          data.data &&
-          data.data.length > 0
-        ) {
-          const owner = data.data[0];
-
-          setCurrentUser(owner);
-
-          localStorage.setItem(
-            "user",
-            JSON.stringify(owner)
-          );
-
-          console.log(
-            "Owner session created:",
-            owner
-          );
-        } else {
-          console.error(
-            "No owner account found in MongoDB."
-          );
-        }
-      } catch (error) {
-        console.error(
-          "Owner Session Error:",
-          error
-        );
-      }
-    };
-
-    loadOwnerSession();
-  }, []);
-
+  
+useEffect(() => {
+  if (currentUser?._id) {
+    console.log("Current Owner:", currentUser);
+  } else {
+    console.log("No logged-in user found.");
+  }
+}, [currentUser]);
   // ========================================
   // TENANTS
   // ========================================
@@ -519,43 +486,158 @@ function OwnerDashboard() {
   // ADD / EDIT PROPERTY
   // ========================================
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
 
-    if (
-      !formData.title ||
-      !formData.location ||
-      !formData.rent
-    ) {
-      alert(
-        "Please fill Title, Location and Monthly Rent."
+  //   if (
+  //     !formData.title ||
+  //     !formData.location ||
+  //     !formData.rent
+  //   ) {
+  //     alert(
+  //       "Please fill Title, Location and Monthly Rent."
+  //     );
+
+  //     return;
+  //   }
+
+  //   if (editingId) {
+  //     setProperties((prev) =>
+  //       prev.map((property) =>
+  //         property.id === editingId
+  //           ? {
+  //               ...formData,
+  //               id: editingId,
+  //             }
+  //           : property
+  //       )
+  //     );
+  //   } else {
+  //     const newProperty = {
+  //       ...formData,
+  //       id: Date.now(),
+  //     };
+
+  //     setProperties((prev) => [
+  //       ...prev,
+  //       newProperty,
+  //     ]);
+  //   }
+
+  //   setFormData({
+  //     title: "",
+  //     location: "",
+  //     rent: "",
+  //     area: "",
+  //     bedrooms: "",
+  //     bathrooms: "",
+  //     propertyType: "",
+  //     furnishing: "",
+  //     description: "",
+  //     image: "",
+  //   });
+
+  //   setEditingId(null);
+
+  //   setShowForm(false);
+  // };
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  if (
+    !formData.title ||
+    !formData.location ||
+    !formData.rent ||
+    !formData.area ||
+    !formData.bedrooms ||
+    !formData.bathrooms
+  ) {
+    alert(
+      "Please fill Title, Location, Rent, Area, Bedrooms and Bathrooms."
+    );
+    return;
+  }
+
+  if (!currentUser) {
+    alert("User session not found. Please login again.");
+    return;
+  }
+
+  const ownerId = currentUser._id || currentUser.id;
+
+  if (!ownerId) {
+    alert("Owner ID not found. Please login again.");
+    return;
+  }
+
+  const propertyData = {
+    owner: ownerId,
+    title: formData.title,
+    location: formData.location,
+    rent: Number(formData.rent),
+    area: Number(formData.area),
+    bedrooms: Number(formData.bedrooms),
+    bathrooms: Number(formData.bathrooms),
+    propertyType: formData.propertyType || "Apartment",
+    furnishing: formData.furnishing || "Furnished",
+    description: formData.description,
+    image: formData.image,
+  };
+
+  try {
+    let response;
+
+    if (editingId) {
+      response = await fetch(
+        `${API_URL}/api/properties/${editingId}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(propertyData),
+        }
       );
+    } else {
+      response = await fetch(
+        `${API_URL}/api/properties`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(propertyData),
+        }
+      );
+    }
 
+    const data = await response.json();
+
+    console.log("Property API Response:", data);
+
+    if (!response.ok || !data.success) {
+      alert(data.message || "Failed to save property.");
       return;
     }
 
-    if (editingId) {
-      setProperties((prev) =>
-        prev.map((property) =>
-          property.id === editingId
-            ? {
-                ...formData,
-                id: editingId,
-              }
+    // Add saved property to the screen
+    setProperties((prev) => {
+      if (editingId) {
+        return prev.map((property) =>
+          property._id === editingId
+            ? data.data
             : property
-        )
-      );
-    } else {
-      const newProperty = {
-        ...formData,
-        id: Date.now(),
-      };
+        );
+      }
 
-      setProperties((prev) => [
-        ...prev,
-        newProperty,
-      ]);
-    }
+      return [data.data, ...prev];
+    });
+
+    alert(
+      editingId
+        ? "Property updated successfully!"
+        : "Property added successfully!"
+    );
 
     setFormData({
       title: "",
@@ -571,9 +653,16 @@ function OwnerDashboard() {
     });
 
     setEditingId(null);
-
     setShowForm(false);
-  };
+
+  } catch (error) {
+    console.error("Save Property Error:", error);
+
+    alert(
+      "Unable to connect to backend. Please make sure the backend server is running."
+    );
+  }
+};
 
   // ========================================
   // EDIT PROPERTY
@@ -698,6 +787,16 @@ function OwnerDashboard() {
         <div className="owner-sidebar-line"></div>
 
         <nav className="owner-sidebar-nav">
+          <a
+  href="/"
+  onClick={(e) => {
+    e.preventDefault();
+    navigate("/");
+  }}
+>
+  <FiHome />
+  <span>Home</span>
+</a>
 
           {/* DASHBOARD */}
 

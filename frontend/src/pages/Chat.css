@@ -555,3 +555,58 @@
   }
 
 }
+/* =====================================================
+   TENANT CHAT INPUT
+===================================================== */
+
+.tenant-chat-input-area {
+  min-height: 72px;
+  padding: 12px 14px;
+  background: #ffffff;
+  border-top: 1px solid #e5eaf0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tenant-chat-input-area input {
+  flex: 1;
+  height: 44px;
+  border: 1px solid #dfe5ec;
+  border-radius: 9px;
+  padding: 0 14px;
+  outline: none;
+  font-size: 13px;
+  color: #27364d;
+  background: #ffffff;
+}
+
+.tenant-chat-input-area input::placeholder {
+  color: #a3acb9;
+}
+
+.tenant-chat-input-area input:focus {
+  border-color: #ff4d6d;
+}
+
+.tenant-chat-input-area button {
+  height: 44px;
+  min-width: 86px;
+  padding: 0 15px;
+  border: none;
+  border-radius: 9px;
+  background: #ff4d6d;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  cursor: pointer;
+}
+
+.tenant-chat-input-area button:disabled {
+  background: #f5a1b1;
+  cursor: not-allowed;
+}

@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
+
 import "./Navbar.css";
 
 function Navbar() {
+
+   
   return (
     <nav className="navbar navbar-expand-lg">
       <div className="container">
@@ -82,6 +85,8 @@ function Navbar() {
                 Register
               </Link>
             </li>
+             
+
 
           </ul>
 

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
 import "./TenantDashboard.css";
 
@@ -18,24 +19,31 @@ import {
 } from "react-icons/fi";
 
 const API_URL = "https://stayfinder-property-rental.onrender.com";
+//"http://localhost:5000";
 
 function TenantDashboard() {
+  const navigate = useNavigate();
   // ========================================
   // USER
   // ========================================
 
-  const storedUser = localStorage.getItem("user");
+ const storedUser = localStorage.getItem("user");
 
-  let currentUser = null;
+let currentUser = null;
 
-  try {
-    currentUser = storedUser
-      ? JSON.parse(storedUser)
-      : null;
-  } catch (error) {
-    console.error("User Session Error:", error);
-    currentUser = null;
+try {
+  if (storedUser) {
+    const user = JSON.parse(storedUser);
+
+    currentUser = {
+      ...user,
+      _id: user._id || user.id,
+    };
   }
+} catch (error) {
+  console.error("User Session Error:", error);
+  currentUser = null;
+}
 
   // ========================================
   // STATES
@@ -543,6 +551,16 @@ function TenantDashboard() {
         <div className="sidebar-line"></div>
 
         <nav className="tenant-sidebar-nav">
+          <a
+  href="/"
+  onClick={(e) => {
+    e.preventDefault();
+    navigate("/");
+  }}
+>
+  <FiHome />
+  <span>Home</span>
+</a>
 
           {/* DASHBOARD */}
 
@@ -556,7 +574,7 @@ function TenantDashboard() {
             }}
           >
             <FiGrid />
-
+           
             <span>
               Dashboard
             </span>
@@ -565,33 +583,30 @@ function TenantDashboard() {
           {/* BROWSE PROPERTIES */}
 
           <a
-            href="#"
-            onClick={(e) =>
-              e.preventDefault()
-            }
-          >
-            <FiSearch />
-
-            <span>
-              Browse Properties
-            </span>
-          </a>
+  href="/properties"
+  onClick={(e) => {
+    e.preventDefault();
+    navigate("/properties");
+  }}
+>
+  <FiHome />
+  <span>Browse Properties</span>
+</a>
 
           {/* WISHLIST */}
 
-          <a
-            href="#"
-            onClick={(e) =>
-              e.preventDefault()
-            }
-          >
-            <FiHeart />
-
-            <span>
-              Wishlist
-            </span>
-          </a>
-
+<a
+  href="/wishlist"
+  onClick={(e) => {
+    e.preventDefault();
+    navigate("/wishlist");
+  }}
+>
+  <FiHeart />
+  <span>
+    Wishlist
+  </span>
+</a>
           {/* MY REQUESTS */}
 
           <a
@@ -634,6 +649,17 @@ function TenantDashboard() {
             </span>
           </a>
 
+           {/* wishlist */}
+           <a
+  href="/wishlist"
+  onClick={(e) => {
+    e.preventDefault();
+    navigate("/wishlist");
+  }}
+>
+  <FiHeart />
+  <span>Wishlist</span>
+</a>
           {/* PROFILE */}
 
           <a

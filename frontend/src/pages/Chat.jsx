@@ -7,7 +7,9 @@ import {
   FiUser,
 } from "react-icons/fi";
 
-const API_URL = "https://stayfinder-property-rental.onrender.com";
+const API_URL =//"http://localhost:5000";
+
+"https://stayfinder-property-rental.onrender.com";
 
 function Chat({ onClose }) {
   const [currentUser, setCurrentUser] = useState(null);
@@ -21,37 +23,30 @@ function Chat({ onClose }) {
   // ------------------------------------
   // GET CURRENT USER
   // ------------------------------------
-  useEffect(() => {
-    try {
-      const storedUser = localStorage.getItem("user");
+ useEffect(() => {
+  try {
+    const storedUser = localStorage.getItem("user");
 
-      if (storedUser) {
-        const user = JSON.parse(storedUser);
+    if (storedUser) {
+      const user = JSON.parse(storedUser);
 
-        if (user && user._id) {
-          setCurrentUser(user);
-          return;
-        }
+      if (user && (user._id || user.id)) {
+        const loggedInUser = {
+          ...user,
+          _id: user._id || user.id,
+        };
+
+        setCurrentUser(loggedInUser);
+        return;
       }
-
-      // Temporary test user
-      setCurrentUser({
-        _id: "68b5f5a12345678912345678",
-        name: "Test Owner",
-        email: "owner@test.com",
-        role: "owner",
-      });
-    } catch (error) {
-      console.error("User Session Error:", error);
-
-      setCurrentUser({
-        _id: "68b5f5a12345678912345678",
-        name: "Test Owner",
-        email: "owner@test.com",
-        role: "owner",
-      });
     }
-  }, []);
+
+    setCurrentUser(null);
+  } catch (error) {
+    console.error("User Session Error:", error);
+    setCurrentUser(null);
+  }
+}, []);
 
   // ------------------------------------
   // GET USERS
@@ -70,26 +65,32 @@ function Chat({ onClose }) {
 
         const response = await fetch(endpoint);
 
-        const data = await response.json();
+        
+const data = await response.json();
 
-        if (data.success) {
-          setUsers(data.data || []);
+console.log("Current user:", currentUser);
+console.log("Owners API response:", data);
 
-          if (data.data && data.data.length > 0) {
-            setSelectedUser(data.data[0]);
-          }
-        } else {
-          console.error("Failed to fetch users:", data.message);
-        }
-      } catch (error) {
-        console.error("Fetch Users Error:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+if (data.success) {
+  setUsers(data.data || []);
 
-    fetchUsers();
-  }, [currentUser]);
+  if (data.data && data.data.length > 0) {
+    setSelectedUser(data.data[0]);
+  }
+} else {
+  console.error("Failed to fetch users:", data.message);
+}
+} catch (error) {
+  console.error("Fetch Users Error:", error);
+} finally {
+  setLoading(false);
+}
+};
+
+fetchUsers();
+}, [currentUser]);
+
+
 
   // ------------------------------------
   // SOCKET CONNECTION
@@ -188,6 +189,8 @@ function Chat({ onClose }) {
     const trimmedMessage = messageText.trim();
 
     if (!trimmedMessage) return;
+    console.log("CHAT CURRENT USER:", currentUser);
+console.log("CHAT USER ID:", currentUser?._id);
 
     if (!currentUser?._id) {
       alert("User session not found.");

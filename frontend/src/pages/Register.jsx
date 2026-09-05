@@ -42,7 +42,8 @@ function Register() {
       // =========================
 
       const response = await fetch(
-"https://stayfinder-property-rental.onrender.com/api/auth/register",
+ "https://stayfinder-property-rental.onrender.com/api/auth/register",
+//"http://localhost:5000/api/auth/register",
     {
           method: "POST",
 

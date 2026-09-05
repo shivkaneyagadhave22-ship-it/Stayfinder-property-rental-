@@ -18,6 +18,7 @@ import About from "./pages/About";
 import Properties from "./pages/Properties";
 import Chat from "./pages/Chat";
 import NotFound from "./pages/NotFound";
+import Wishlist from "./pages/Wishlist";
 
 
 function AppContent() {
@@ -60,7 +61,14 @@ function AppContent() {
           path="/properties"
           element={<Properties />}
         />
+        {/* =========================
+            wishlist
+        ========================== */}
 
+         <Route
+                 path="/wishlist"
+                element={<Wishlist />}
+/>
 
         {/* =========================
             CHAT
