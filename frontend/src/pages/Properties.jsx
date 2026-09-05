@@ -51,7 +51,7 @@ const [loading, setLoading] = useState(true);
 useEffect(() => {
   const fetchProperties = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/properties");
+      const response = await fetch("https://stayfinder-property-rental.onrender.com");
       const result = await response.json();
 
       if (result.success) {
