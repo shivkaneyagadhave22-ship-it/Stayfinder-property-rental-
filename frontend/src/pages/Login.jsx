@@ -28,7 +28,7 @@ function Login() {
       // =========================
       // CONNECT WITH BACKEND
       // =========================
-      const response = await fetch
+      const response = await fetch(
         "https://stayfinder-property-rental.onrender.com/api/auth/login",
   //"http://localhost:5000/api/auth/login",
         {
