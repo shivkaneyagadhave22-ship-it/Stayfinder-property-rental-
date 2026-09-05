@@ -51,16 +51,23 @@ const [loading, setLoading] = useState(true);
 useEffect(() => {
   const fetchProperties = async () => {
     try {
-      const response = await fetch("https://stayfinder-property-rental.onrender.com");
+      const response = await fetch(
+        "https://stayfinder-property-rental.onrender.com/api/properties"
+      );
+
       const result = await response.json();
 
-      if (result.success) {
-        setProperties(result.data);
+      console.log("Properties Response:", result);
+
+      if (response.ok && result.success) {
+        setProperties(Array.isArray(result.data) ? result.data : []);
       } else {
-        console.error("Failed to fetch properties");
+        console.error("Failed to fetch properties:", result.message);
+        setProperties([]);
       }
     } catch (error) {
       console.error("Error fetching properties:", error);
+      setProperties([]);
     } finally {
       setLoading(false);
     }
@@ -68,11 +75,10 @@ useEffect(() => {
 
   fetchProperties();
 }, []);
-
   const filteredProperties = properties.filter((property) => {
-    const locationMatch = property.location
-      .toLowerCase()
-      .includes(location.toLowerCase());
+    const locationMatch = (property.location || "")
+  .toLowerCase()
+  .includes(location.toLowerCase());
 
     const typeMatch =
       propertyType === "All Property Types" ||
@@ -237,7 +243,7 @@ useEffect(() => {
                   <div className="property-price">
 
                     <strong>
-                      ₹{property.rent.toLocaleString("en-IN")}
+                    ₹{Number(property.rent || 0).toLocaleString("en-IN")}
                     </strong>
 
                     <span>/ month</span>
