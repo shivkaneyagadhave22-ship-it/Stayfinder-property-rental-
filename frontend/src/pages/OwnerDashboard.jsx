@@ -66,6 +66,60 @@ useEffect(() => {
     console.log("No logged-in user found.");
   }
 }, [currentUser]);
+
+// ========================================
+// PROPERTY
+// ========================================
+
+// const [properties, setProperties] = useState([]);
+// const [showForm, setShowForm] = useState(false);
+// const [editingId, setEditingId] = useState(null);
+
+// ========================================
+// GET OWNER PROPERTIES
+// ========================================
+
+useEffect(() => {
+  const fetchOwnerProperties = async () => {
+    if (!currentUser?._id) {
+      return;
+    }
+
+    try {
+      const response = await fetch(
+        `${API_URL}/api/properties/owner/${currentUser._id}`
+      );
+
+      const data = await response.json();
+
+      console.log("Owner Properties Response:", data);
+
+      if (response.ok && data.success) {
+        setProperties(
+          Array.isArray(data.data) ? data.data : []
+        );
+      } else {
+        console.error(
+          "Owner Properties Error:",
+          data.message
+        );
+
+        setProperties([]);
+      }
+    } catch (error) {
+      console.error(
+        "Owner Properties Fetch Error:",
+        error
+      );
+
+      setProperties([]);
+    }
+  };
+
+  fetchOwnerProperties();
+}, [currentUser?._id]);
+
+
   // ========================================
   // TENANTS
   // ========================================
@@ -692,7 +746,7 @@ useEffect(() => {
         property.image || "",
     });
 
-    setEditingId(property.id);
+    setEditingId(property._id);
 
     setShowForm(true);
 
@@ -721,7 +775,7 @@ useEffect(() => {
     setProperties((prev) =>
       prev.filter(
         (property) =>
-          property.id !== id
+          property._id !== id
       )
     );
   };
@@ -1966,7 +2020,7 @@ useEffect(() => {
                       <div
                         className="owner-property-card"
                         key={
-                          property.id
+                          property._id
                         }
                       >
 
@@ -2065,7 +2119,7 @@ useEffect(() => {
                               <button
                                 onClick={() =>
                                   handleDelete(
-                                    property.id
+                                    property._id
                                   )
                                 }
                               >
